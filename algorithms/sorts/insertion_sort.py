@@ -20,7 +20,7 @@ if __name__ == "__main__":
 	if len(sys.argv) >2:
 		a = [randint(0,int(sys.argv[2])) for k in range(int(sys.argv[1]))]	
 		print("Sorting " + sys.argv[1] + " numbers in range [0," + sys.argv[2] + "]")
-	elif len(sys.argv) == 1:
+	elif len(sys.argv) > 1:
 		a = [randint(0, randint(100)) for k in range(int(sys.argv[1]))]
 		print("Sorting " + sys.argv[1] + " numbers in range [0,100]")
 	else:
@@ -29,8 +29,9 @@ if __name__ == "__main__":
 	start = datetime.datetime.now()
 	insertion_sort(a)
 	end = datetime.datetime.now()
-	elapsed = start - end
-	seconds = (elapsed.seconds % 3600) // 60 
-	minutes = 10
+	elapsed = end - start
 	microseconds = elapsed.microseconds
-	print("%d minutes , %d seconds\nTotal microseconds: %d " %(minutes, seconds, microseconds))
+	total_seconds = elapsed.total_seconds()
+	minutes = (total_seconds //60)%60
+	seconds = (total_seconds %60)
+	print("Time elapsed(min:sec) = %d:%d \nTotal Seconds: %d \nTotal microseconds: %d " %(minutes, seconds, total_seconds, microseconds))
