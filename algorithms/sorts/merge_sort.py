@@ -66,6 +66,18 @@ def merge(arr, l, mid, r):
 				i+=1
 			break;
 	arr[l:r] = result
+
+#non-recursive merge sort
+def merge_sort3(arr):
+	blocksize, n = 1, len(arr)
+	while blocksize < n:
+		for p in range(0, n, 2*blocksize):
+			q = p + blocksize
+			r = min(q+blocksize, n)
+			if r > q:
+				merge(arr, p, q, r)
+		blocksize = 2*blocksize
+
 if __name__ == "__main__":
 	if len(sys.argv) >2:
 		a = [randint(0,int(sys.argv[2])) for k in range(int(sys.argv[1]))]
@@ -87,7 +99,8 @@ if __name__ == "__main__":
 	seconds = (total_seconds %60)
 	print("Single Function Time elapsed(min:sec) = %d:%d \nTotal Seconds: %d \nTotal microseconds: %d " %(minutes, seconds, total_seconds, microseconds))
 	start = datetime.datetime.now()
-	merge_sort2(a)
+	c=a
+	merge_sort2(c)
 	end = datetime.datetime.now()
 	elapsed = end - start
 	microseconds = elapsed.microseconds
@@ -95,3 +108,27 @@ if __name__ == "__main__":
 	minutes = (total_seconds //60)%60
 	seconds = (total_seconds %60)
 	print("Function with Helper Time elapsed(min:sec) = %d:%d \nTotal Seconds: %d \nTotal microseconds: %d " %(minutes, seconds, total_seconds, microseconds))
+	start = datetime.datetime.now()
+	merge_sort3(a)
+	end = datetime.datetime.now()
+	elapsed = end - start
+	microseconds = elapsed.microseconds
+	total_seconds = elapsed.total_seconds()
+	minutes = (total_seconds //60)%60
+	seconds = (total_seconds %60)
+	print("Non-Recursive Function with Helper Time elapsed(min:sec) = %d:%d \nTotal Seconds: %d \nTotal microseconds: %d " %(minutes, seconds, total_seconds, microseconds))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
