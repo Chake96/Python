@@ -1,4 +1,4 @@
-# A divide and conquer algorithm
+# A divide and conquer algorith
 # Time Complexity:
 #	Best Case: O(nlogn)
 #	Worst Case: O(nlogn)
@@ -10,14 +10,14 @@
 from random import randint
 import sys
 import datetime
-#python3 single function merge_sort implementation
-def merge_sort(arr):
+#python3 single function sort1 implementation
+def sort1(arr):
 	if len(arr) > 1:
 		mid = len(arr)//2
 		left = arr[:mid]
 		right = arr[mid:]
-		merge_sort(left)
-		merge_sort(right)
+		sort1(left)
+		sort1(right)
 		i = j = k = 0
 
 		while i < len(left) and j < len(right):
@@ -37,15 +37,15 @@ def merge_sort(arr):
 			j += 1
 			k += 1
 #merge sort with a helper function
-def merge_sort2(arr, l=0, r=None):
+def sort2(arr, l=0, r=None):
 	if r is None: 
 		r = len(arr)
 	if l < r-1:
 		mid = (l+r)//2
-		merge_sort2(arr, l,mid)
-		merge_sort2(arr, mid,r)
+		sort2(arr, l,mid)
+		sort2(arr, mid,r)
 		merge(arr, l, mid, r)
-#helper function to merge the arrays/lists from merge_sort2
+#helper function to merge the arrays/lists from sort2
 def merge(arr, l, mid, r):
 	result, i, j = [], l, mid
 	while True:
@@ -68,7 +68,7 @@ def merge(arr, l, mid, r):
 	arr[l:r] = result
 
 #non-recursive merge sort
-def merge_sort3(arr):
+def sort3(arr):
 	blocksize, n = 1, len(arr)
 	while blocksize < n:
 		for p in range(0, n, 2*blocksize):
@@ -90,7 +90,7 @@ if __name__ == "__main__":
 		print("Sorting 20 random numbers in range [0,100]")
 	start = datetime.datetime.now()
 	b = a
-	merge_sort(b)
+	sort1(b)
 	end = datetime.datetime.now()
 	elapsed = end - start
 	microseconds = elapsed.microseconds
@@ -100,7 +100,7 @@ if __name__ == "__main__":
 	print("Single Function Time elapsed(min:sec) = %d:%d \nTotal Seconds: %d \nTotal microseconds: %d " %(minutes, seconds, total_seconds, microseconds))
 	start = datetime.datetime.now()
 	c=a
-	merge_sort2(c)
+	sort2(c)
 	end = datetime.datetime.now()
 	elapsed = end - start
 	microseconds = elapsed.microseconds
@@ -109,7 +109,7 @@ if __name__ == "__main__":
 	seconds = (total_seconds %60)
 	print("Function with Helper Time elapsed(min:sec) = %d:%d \nTotal Seconds: %d \nTotal microseconds: %d " %(minutes, seconds, total_seconds, microseconds))
 	start = datetime.datetime.now()
-	merge_sort3(a)
+	sort3(a)
 	end = datetime.datetime.now()
 	elapsed = end - start
 	microseconds = elapsed.microseconds
