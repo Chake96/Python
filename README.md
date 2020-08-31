@@ -1,4 +1,4 @@
-# Python - version 3.6.9
+#Python - version 3.6.9
 A repository for practicing python, implementing algorithms, and tool scripts
 
 ## Summary
@@ -11,3 +11,5 @@ there is a seperate repository planned to host all of my public facing Pytorch w
   ### Organizational
     -Add seperate directory for Artificial Intelligence: A Modern Approach code
     
+
+
