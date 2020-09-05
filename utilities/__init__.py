@@ -1,1 +1,1 @@
-__all__ = ["memoize"]
+__all__ = ["memoize", "timing"]
