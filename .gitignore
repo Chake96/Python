@@ -1,3 +1,6 @@
+#custom directories to not put on python, due to either simplicity or just stupid non-useful stuff
+trivial_examples/
+
 
 ### Vim ###
 # Swap
